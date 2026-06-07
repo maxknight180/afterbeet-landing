@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afterbeet — Relive the moment</title>
+  <meta name="description" content="Afterbeet is the social app for ravers and music-event lovers. Capture your festivals, relive the moments, and live in the now. Join the launch waitlist." />
+
+  <!-- Open Graph / social share -->
+  <meta property="og:title" content="Afterbeet — Relive the moment" />
+  <meta property="og:description" content="The social app for ravers and music-event lovers. Join the launch waitlist." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Animated background glow -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span>
+      </span>
+      <span class="brand-name">Afterbeet</span>
+    </a>
+    <a class="header-cta" href="#signup">Join the waitlist</a>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow">Coming soon · iOS</p>
+      <h1 class="hero-title">Live in the moment.<br /><span class="grad">Relive it forever.</span></h1>
+      <p class="hero-sub">
+        Afterbeet is the social home for ravers and festival lovers. Capture the
+        venues, the music and the people you go with — then put your phone away and
+        actually <em>be there</em>. The memories are waiting when you get home.
+      </p>
+
+      <!-- big animated equalizer -->
+      <div class="equalizer" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="signup" class="signup-card">
+        <h2 class="signup-title">Be first through the gates</h2>
+        <p class="signup-sub">Join the launch waitlist and get early access when Afterbeet drops.</p>
+
+        <form id="waitlist-form" class="waitlist-form" novalidate>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="email-input"
+            placeholder="your@email.com"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="submit-btn">Join the waitlist</button>
+        </form>
+        <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-fineprint">No spam — just one email when we launch. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <h2 class="section-title">What you'll get</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🎟️</div>
+          <h3>Every event, one place</h3>
+          <p>Browse festivals and events worldwide as vibrant banners. Favourite your go-to's and pin them to the top.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>Your For You feed</h3>
+          <p>A feed built around the events and people you love. Share your clips, discover others' nights out.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Profile &amp; challenges</h3>
+          <p>Build your raver profile, collect event badges, and take on challenges with the people you go with.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <h2>The night doesn't have to end.</h2>
+      <a class="header-cta big" href="#signup">Join the waitlist</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span class="brand-name small">Afterbeet</span>
+    <p>© <span id="year"></span> Afterbeet. Made for the people on the dancefloor.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
