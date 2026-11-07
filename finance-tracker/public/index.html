@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Finance Tracker</div>
+    <nav class="month-nav" aria-label="Month">
+      <button class="icon-btn" id="prev-month" aria-label="Previous month">‹</button>
+      <span id="month-label" aria-live="polite"></span>
+      <button class="icon-btn" id="next-month" aria-label="Next month">›</button>
+    </nav>
+    <div class="topbar-right">
+      <span class="live" id="live-status"><span class="dot" aria-hidden="true"></span><span id="live-text">Connecting…</span></span>
+      <button class="btn primary" id="connect-bank">Connect bank</button>
+    </div>
+  </header>
+
+  <div class="banner" id="demo-banner" hidden>
+    <span><strong>Demo mode.</strong> Add your Plaid keys to <code>.env</code> to link a real bank. The demo bank makes a new card purchase every so often so you can watch things update.</span>
+    <button class="btn" id="simulate-purchase">Simulate a purchase</button>
+  </div>
+
+  <main>
+    <section class="empty card" id="empty-state" hidden>
+      <h1>Link your bank to get started</h1>
+      <p>Connect a checking account or credit card and every purchase shows up here automatically, sorted into budget categories.</p>
+      <button class="btn primary" id="connect-bank-empty">Connect bank</button>
+      <p class="muted small">Or <button class="link-btn" id="add-first-tx">add a transaction by hand</button>.</p>
+    </section>
+
+    <section class="kpis" id="kpis" aria-label="This month at a glance"></section>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="budgets-title">
+        <div class="card-head">
+          <h2 id="budgets-title">Budgets</h2>
+          <button class="btn small" id="edit-budgets">Edit budgets</button>
+        </div>
+        <ul class="budgets" id="budgets"></ul>
+      </section>
+
+      <div class="stack">
+        <section class="card" aria-labelledby="daily-title">
+          <div class="card-head">
+            <h2 id="daily-title">Daily spending</h2>
+          </div>
+          <div class="chart" id="daily-chart"></div>
+        </section>
+        <section class="card" aria-labelledby="accounts-title">
+          <div class="card-head">
+            <h2 id="accounts-title">Accounts</h2>
+          </div>
+          <div id="accounts"></div>
+        </section>
+      </div>
+    </div>
+
+    <section class="card" aria-labelledby="tx-title">
+      <div class="card-head">
+        <h2 id="tx-title">Transactions</h2>
+        <div class="tx-tools">
+          <input type="search" id="tx-search" placeholder="Search" aria-label="Search transactions" />
+          <select id="tx-filter" aria-label="Filter by category"><option value="">All categories</option></select>
+          <button class="btn small" id="add-tx">Add transaction</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="tx-table">
+          <thead><tr><th>Date</th><th>Description</th><th>Category</th><th class="num">Amount</th><th><span class="sr-only">Actions</span></th></tr></thead>
+          <tbody id="tx-body"></tbody>
+        </table>
+      </div>
+      <p class="muted small" id="tx-empty" hidden>No transactions for this month yet.</p>
+    </section>
+  </main>
+
+  <dialog id="tx-dialog">
+    <form method="dialog" id="tx-form">
+      <h2>Add transaction</h2>
+      <div class="segmented" role="radiogroup" aria-label="Type">
+        <label><input type="radio" name="type" value="expense" checked /> Expense</label>
+        <label><input type="radio" name="type" value="income" /> Income</label>
+      </div>
+      <label>Date <input type="date" name="date" required /></label>
+      <label>Description <input type="text" name="name" maxlength="120" required placeholder="e.g. Farmers market" /></label>
+      <label>Amount <input type="number" name="amount" min="0.01" step="0.01" required inputmode="decimal" /></label>
+      <label>Category <select name="category" id="tx-form-category"></select></label>
+      <p class="form-error" id="tx-error" hidden></p>
+      <div class="dialog-actions">
+        <button class="btn" value="cancel" formnovalidate>Cancel</button>
+        <button class="btn primary" value="save" id="tx-save">Add</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="budget-dialog">
+    <form method="dialog" id="budget-form">
+      <h2>Monthly budgets</h2>
+      <p class="muted small">Set 0 for categories you don't want to budget.</p>
+      <div class="budget-inputs" id="budget-inputs"></div>
+      <p class="form-error" id="budget-error" hidden></p>
+      <div class="dialog-actions">
+        <button class="btn" value="cancel" formnovalidate>Cancel</button>
+        <button class="btn primary" value="save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

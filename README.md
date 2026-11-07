@@ -50,3 +50,11 @@ them can replace the fetch call in `script.js`.
 - **Colours / theme:** edit the CSS variables at the top of `styles.css` (`:root { ... }`).
 - **Logo:** currently an animated CSS equalizer + the "Afterbeet" wordmark. Swap in
   a real logo image whenever the Afterbeet logo art is finalised.
+
+---
+
+## Finance Tracker
+
+A separate app lives in [`finance-tracker/`](finance-tracker/). It's a personal
+budget dashboard that links to your bank through Plaid and updates automatically
+when you make a purchase. See its [README](finance-tracker/README.md) to run it.
